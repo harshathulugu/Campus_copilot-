@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 # Replace the text below with your actual API Key
-client = OpenAI(api_key="AIzaSyA7cOuAGfDoOfdMy3LA_v4J9AWWRbDjjk0", base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"], base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
 
 st.title("Campus Copilot")
 
