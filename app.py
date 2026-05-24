@@ -2,7 +2,10 @@ import streamlit as st
 from openai import OpenAI
 
 # Replace the text below with your actual API Key
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"], base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
+client = OpenAI(
+    api_key=st.secrets["OPENAI_API_KEY"], 
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
 
 st.title("Campus Copilot")
 
@@ -19,7 +22,7 @@ if prompt := st.chat_input("Ask about the campus..."):
 
     response = client.chat.completions.create(
         model="gemini-1.5-flash",
-        messages=st.session_state.messages
+        messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
     )
     
     msg = response.choices[0].message.content
