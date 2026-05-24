@@ -24,7 +24,7 @@ if prompt := st.chat_input("Ask about the campus..."):
 
     try:
         response = client.chat.completions.create(
-            model="gemini-1.5-flash",
+            model="gemini-3.5-flash",
             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
         )
         msg = response.choices[0].message.content
